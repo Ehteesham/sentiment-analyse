@@ -158,21 +158,5 @@ vectoriser.fit(X_train)
 
 X_train = vectoriser.transform(X_train)
 X_test = vectoriser.transform(X_test)
-
-
-# ----Model Evaluation----
-# Accuracy Score
-# Confusion Matrix with Plot
-# ROC-AUC Curve
-
-def model_evaluation(model):
-    # Preddict values for test dataset
-    y_pred = model.predict(X_test)
-    # print the evaluation metrics for the dataset.
-    print(classification_report(y_test, y_pred))
-
-    # Compute and plot the confusion matrix
-    cf_matrix = confusion_matrix(y_test, y_pred)
-    categories = ['Neagtive', 'Positive']
-    group_name = ['True Neg', 'False Pos', 'False Neg', 'True Pos']
-    group_percentage = ['{0:.2%}'.format(value) for value in cf_matrix.feature_extraction]
+cf_matrix = confusion_matrix(y_test, y_pred)
+print(cf_matrix)
