@@ -178,3 +178,17 @@ from sklearn.naive_bayes import BernoulliNB
 bnbmodel = BernoulliNB()
 bnbmodel.fit(X_train, y_train)
 model_evaluation(bnbmodel)
+
+# Model - 2 : SVM (Support Vector Model)
+from sklearn.svm import LinearSVC
+scvmodel = LinearSVC()
+scvmodel.fit(X_train, y_train)
+model_evaluation(scvmodel)
+
+# Model - 3 : Logistic Regression
+from sklearn.linear_model import LogisticRegression
+lrmodel = LogisticRegression(C = 2, max_iter=1000, n_jobs=-1)
+lrmodel.fit(X_train, y_train)
+model_evaluation(lrmodel)
+
+# Our Model 3 is giving the best accuracy
