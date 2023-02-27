@@ -154,9 +154,27 @@ X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.05, random_
 # Training the model
 vectoriser = TfidfVectorizer(ngram_range=(1,2), max_features=500000)
 vectoriser.fit(X_train)
-# print("No. of Feature_words: ", len(vectoriser.get_feature_names()))
+print("No. of Feature_words: ", len(vectoriser.get_feature_names_out()))
 
 X_train = vectoriser.transform(X_train)
 X_test = vectoriser.transform(X_test)
-cf_matrix = confusion_matrix(y_test, y_pred)
-print(cf_matrix)
+
+# Model Evaluation
+def model_evaluation(model):
+
+    y_pred = model.predict(X_test)
+
+    print(classification_report(y_test, y_pred))
+
+    cf_matrix = confusion_matrix(y_test, y_pred)
+
+    print(cf_matrix)
+
+# Model Building
+
+# Model - 1 : Bernoulli Naive Bayes
+from sklearn.naive_bayes import BernoulliNB
+
+bnbmodel = BernoulliNB()
+bnbmodel.fit(X_train, y_train)
+model_evaluation(bnbmodel)
